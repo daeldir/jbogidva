@@ -66,6 +66,16 @@
     background-color: rgba(255,100,100,0.4);
 }
 
+/* When we hover an expression, the exact expression translated
+   gets a shadow. This is done in javascript because css cannot
+   prevent the propagation when we hover.
+   
+   This shadow is shown even when the structure is hidden.
+ */
+.lojban .active {
+    text-shadow: 0px 0px 1px black;
+}
+
 /* A bubble appears when we hover on or click an expression.
    We are fancy with animations like fade and zoom in. We also
    display the bubble near the mouse, so it must be in a

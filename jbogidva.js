@@ -58,6 +58,7 @@ var hoverClass = "hover";
 var structureClass = "structure";
 var bubbleClass = "bubble";
 var bubbleVisibleClass = "visible";
+var activeClass = "active";
 var toggleStructureClass = "toggle-structure";
 
 // Two elements are “fixed” in our application: the bubble,
@@ -223,6 +224,17 @@ function showBubble(e) {
     setTimeout(function () {
         bubble.classList.add(bubbleVisibleClass);
     }, 0);
+    // We also add a class to the current target, so we can
+    // style it and avoid the propagation we have with the css
+    // “:hover”.
+    // Before that, we clear any other “active” element,
+    // because if we respond to a click event, the other 
+    // element may not have received the mouseout event.
+    eachQuery("." + parseClass + " ." + activeClass, function (el) {
+        el.classList.remove(activeClass);
+    });
+    el.classList.add(activeClass);
+    
     // Setup a one time event to hide the bubble when we move
     // the mouse out of the expression. This should prevent
     // hiding the bubble right as we hover one, because of
@@ -235,6 +247,8 @@ function showBubble(e) {
     var listener = el.addEventListener("mouseout", function () {
         bubble.classList.remove(bubbleVisibleClass);
         el.removeEventListener("mouseout", listener);
+        // Also, remove the class of the current target.
+        el.classList.remove(activeClass);
     });
     return prevented(e);
 }
