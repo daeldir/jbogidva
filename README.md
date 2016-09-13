@@ -171,10 +171,10 @@ The HTML of a page should always be quite similar:
 <html lang="jbo">
 <head>
     <meta charset="utf-8">
-    <title>Zbafanva: [title of the current page]</title>
+    <title>Jbogidva: [title of the current page]</title>
     <link rel="stylesheet" type="text/css" href="../book.css">
-    <link rel="stylesheet" type="text/css" href="../zbafanva.css">
-    <script src="../zbafanva.js"></script>
+    <link rel="stylesheet" type="text/css" href="../jbogidva.css">
+    <script src="../jbogidva.js"></script>
 </head>
 <body class="lojban">
 
@@ -198,7 +198,7 @@ The `<html>` tag as a `lang` attribute set to `jbo`. This is a
 decision that can be contested, but until it is, we should
 stick to a single convention.
 
-The title of the page always begins with “Zbafanva:”, so a
+The title of the page always begins with “Jbogidva:”, so a
 visitor can identify the website clearly when looking at his
 browsing history.
 
@@ -364,7 +364,7 @@ systems and browsers. But it clearly needs testing.
 
 ## Reusing the script
 
-You can use the `zbafanva.js` and `zbafanva.css` files on your
+You can use the `jbogidva.js` and `jbogidva.css` files on your
 own website if you wish, it should not be specifically tied to
 this one (being integrated into the lojban wiki would be a kind
 of consecration, wouldn’t it be?).
