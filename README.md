@@ -14,6 +14,8 @@
 
 It is a tool to help learn lojban by reading a lot of it.
 
+You can see it in action [here](https://daeldir.github.io/jbogidva/)
+
 The goal is to have lojban texts enhanced to ease reading
 while learning.
 
