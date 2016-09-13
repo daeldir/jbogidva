@@ -1,0 +1,93 @@
+/* LRL Recursive License
+
+   Copyright Dorian Trupin <daeldir@gmail.com> © 2016
+
+   Permission is granted to use, copy, modify and/or distribute
+   this work as long as:
+
+       You follow the license
+
+   This license is under LRL Recursive license.
+
+   This software is provided with the guarantee that it will
+   fail some day. Use it at your own risk.
+
+   For more details, see https://github.com/daeldir/LRL
+*/
+
+/* We have a button to toggle showing the structure (we can
+   see at a glance what has been translated instaed of having
+   to probe the text).
+ */
+.toggle-structure {
+    position: fixed;
+    top: 1%;
+    right: 1%;
+    padding: 0.5em;
+    background-color: #FFF;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 10px;
+    opacity: 0.5;
+    transform: scale(1);
+    transition: opacity 0.1s, transform 0.1s;
+}
+
+.toggle-structure:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* We put some padding around translated text so we can hover
+   different parts of the translation easily.
+ */
+.lojban .hover, .lojban .click {
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+}
+
+/* When showing the structure, clickable definitions are showed
+   in colored text.
+ */
+.lojban.structure .click {
+    color: #050;
+}
+
+/* When showing the structure, hoverable text is shown with a
+   colored background, darker and darker as we nest the
+   expressions. The background changes color when we hover a
+   word (the background of the expression, it’s parent
+   exression, and so on).
+ */
+.lojban.structure .hover {
+    border-radius: 5px;
+    background-color: rgba(100,100,255,0.4);
+}
+.lojban.structure .hover:hover {
+    background-color: rgba(255,100,100,0.4);
+}
+
+/* A bubble appears when we hover on or click an expression.
+   We are fancy with animations like fade and zoom in. We also
+   display the bubble near the mouse, so it must be in a
+   “fixed” position.
+ */
+.bubble {
+    position: fixed;
+    z-index: 100;
+    border-radius: 10px;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-top: 1em;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 5px black;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.2s, transform 0.15s, top 0.1s, left 0.1s;
+    max-width: 25%;
+}
+.bubble.visible {
+    opacity: 1;
+    transform: scale(1);
+}
