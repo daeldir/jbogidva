@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jbogidva</title>
+    <link rel="stylesheet" type="text/css" href="book.css">
+    <style>
+body {
+    height: 90%;
+    padding-bottom: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.vlayout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.vlayout>div {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.hlayout {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.hlayout>div {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.lang {
+    text-align: center;
+}
+
+.around {
+    border-radius: 500px;
+    box-shadow: 0px 0px 20px black;
+}
+@media all and (min-height: 600px) {
+    .around {
+        margin-top: 20%;
+        height: 50%;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="vlayout around">
+    <div class="vlayout">
+        <div></div>
+        <div><h1>Jbogidva</h1></div>
+    </div>
+    <div class="hlayout">
+        <div class="lang"><a href="en/index.html">What is it?</a></div>
+        <div class="lang"><a href="fr/index.html">Qu’est-ce que c’est?</a></div>
+    </div>
+</body>
+</html>
