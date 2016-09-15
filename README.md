@@ -168,39 +168,27 @@ The HTML of a page should always be quite similar:
 
 ```html
 <!doctype html>
-<html lang="jbo">
-<head>
-    <meta charset="utf-8">
-    <title>Jbogidva: [title of the current page]</title>
-    <link rel="stylesheet" type="text/css" href="../book.css">
-    <link rel="stylesheet" type="text/css" href="../jbogidva.css">
-    <script src="../jbogidva.js"></script>
-</head>
-<body class="lojban">
+<meta charset="utf-8">
+<title>Jbogidva: [title of the current page]</title>
+<script src="../book.js" data-root="../"></script>
 
-    [Navigation links]
+[Navigation links]
 
-    [The translated text]
-
-    [Navigation links]
-
-</body>
-</html>
+[The translated text]
 ```
-
-We apply the `lojban` class to `<body>`, because all of our
-page is meant to be translated. Keep in mind that you _can_
-apply this class to elements in particular (which means less
-text to parse by the script if you have a lot of text not
-translated).
-
-The `<html>` tag as a `lang` attribute set to `jbo`. This is a
-decision that can be contested, but until it is, we should
-stick to a single convention.
 
 The title of the page always begins with “Jbogidva:”, so a
 visitor can identify the website clearly when looking at his
 browsing history.
+
+`book.js` generate the invariants of the page: it loads the CSS
+of the “book”, the javascript and CSS of jbogidva, add the
+`lojban` class to the body itself and reproduce the navigation
+links from the top of the page to the bottom.
+
+`book.js` needs to know where the folder containing the scripts
+and css is, hence the `data-root` attribute on the script: it
+is used to specify where to find them.
 
 
 #### Navigation links
@@ -218,9 +206,6 @@ browsing history.
     </div>
 </nav>
 ```
-
-The navigation part should be the same at the top and at the
-bottom of the page.
 
 You can omit the links to a previous or next page, or to the
 chapters. Only “table of content” is mandatory. However, you
@@ -252,7 +237,8 @@ For now, the table of content is “ro selci'a”:
 </div>
 ```
 
-Chapters are marked “romo'o” (but we don’t have any yet!):
+Chapters (for bigger texts that span multiple pages) are
+marked “romo'o” (but we don’t have any yet!):
 
 ```html
 <div>
@@ -315,6 +301,8 @@ The main files are in the root directory. They are:
    good.
  - `book.css`: the css of this website. Not mandatory if you
    reuse the script only.
+ - `book.js`: a script that generate most of what never changes
+   on the page.
 
 The root directory also contains:
 
@@ -343,7 +331,7 @@ The pages are static. So we can develop and deploy using a very
 simple infrastructure (I currently develop with only a text
 editor and a browser, no web server, no fancy stuff). This
 means that some things are not automated however (the
-invariants in a web page, the index of all the files…).
+navigation links, the index of all the files…).
 
 The navigation is on a separated page to avoid deduplication.
 This is a direct result of the choice to have a static website
@@ -375,3 +363,26 @@ You may want to modify the CSS to suit your style, though…
 required for the script to function. As per the license you
 can still reuse it, of course.
 
+`book.js` is also specific to this site. It generates part of
+the HTML needed for the site to function. If you want to reuse
+`jbogidva.js` and `jbogidva.css`, you will need to insert them
+explicitly. You will not find an example of the code required
+to do so on any page of the website as they use `book.js`, so
+here is a simple structure that shows how things would normally
+be done:
+
+```html
+<html>
+    <head>
+        […meta, title, etc…]
+        <link rel="stylesheet" type="text/css" href="jbogidva.css">
+        <script src="jbogidva.js"></script>
+    </head>
+    <body>
+<p class="lojban">
+{lo lojbo se ciska cu se ponse do
+|your lojban text}
+</p>
+    </body>
+</html>
+```
